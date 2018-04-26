@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+  <title>Charlie's Restaurant</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="first.js"></script>
+
+</head>
+<body>
+  <div class = "body">
+    <div class = "nav">
+      <h1>Charlie's Restaurant</h1>
+    </div>
+
+    <div>
+      <h2 id = "funds">Funds: $0</h2>
+    </div>
+
+    <div id="materials" class="section">
+      <div class="sectionHead">
+        Materials
+      </div>
+      <div class="sectionLeft">
+        <p>Burger Buns</p>
+        <p>Burger Patty</p>
+        <p>Tomatoes</p>
+        <p>Lettuce</p>
+        <p>Drinks</p>
+      </div>
+      <div class="sectionMiddle">
+        <p>0</p>
+        <p>0</p>
+        <p>0</p>
+        <p>0</p>
+        <p>0</p>
+      </div>
+      <div class="sectionRight">
+        <p><button onclick="buyGroceries(0)">Buy</button></p>
+        <p><button onclick="buyGroceries(1)">Buy</button></p>
+        <p><button onclick="buyGroceries(2)">Buy</button></p>
+        <p><button onclick="buyGroceries(1)">Buy</button></p>
+        <p><button onclick="buyGroceries(3)">Buy</button></p>
+      </div>
+    </div>
+
+    <div id="kitchen" class="section">
+      <div class="sectionHead">
+        Kitchen
+      </div>
+      <div class="sectionSubHead">
+        Cooks
+      </div>
+      <div class="sectionLeft">
+        <p>John - $500</p> <!--add way to give details on each character-->
+        <p>Malo - $50000</p>
+      </div>
+      <div class="sectionMiddle">
+        <p><button onclick="buy(0)">Hire</button></p>
+        <p><button onclick="buy(1)">Hire</button></p>
+      </div>
+      <div class="sectionRight">
+        <p><button onclick="upgrade(0)">Send to School</button></p>
+        <p><button onclick="upgrade(1)">Send to School</button></p>
+      </div>
+    </div>
+
+    <div id="restaurant" class="section">
+      <div class="sectionHead">
+        Restaurant
+      </div>
+      <div class="sectionLeft">
+        <p>Burger</p>
+      </div>
+      <div class="sectionMiddle">
+        <p>0</p> 
+      </div>
+      <div class=sectionRight>
+        <p><button onclick="sell(100)">Sell</button></p>
+      </div>
+    </div>
+  </div><!--Body-->
+</body>
+</html>

@@ -1,0 +1,84 @@
+div.body {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+div.nav{
+  grid-column: 1 / span 3;
+  grid-row: 1;
+
+}
+
+div#funds{
+  grid-column: 1;
+  grid-row: 2;
+}
+
+div#materials {
+  grid-column: 1;
+  grid-row: 3 ;
+  border-top: 10px #66FF66 solid;
+
+}
+div#kitchen{
+  grid-column: 2;
+  grid-row: 3;
+  border-top: 10px #FF355E solid;
+}
+div#restaurant{
+  grid-column: 3;
+  grid-row: 3;
+  border-top: 10px #50BFE6 solid;
+}
+/**Grid inside sections**/
+div.section{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-radius: 25px;
+  background-color: #EEEEEE;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 10px gray solid;
+
+}
+
+
+div.sectionHead{
+  grid-column: 1/ span 3;
+  grid-row: 1;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+div.sectionSubHead{
+  grid-column: 1/ span 3;
+  grid-row: 2;
+  font-size: 1em;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+div.sectionLeft{
+
+
+}
+div.sectionMiddle{
+  text-align: center;
+
+}
+div.sectionRight{
+  text-align: center;
+
+}
+
+p{
+  height: 20px;
+}

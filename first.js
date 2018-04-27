@@ -3,12 +3,14 @@ function getAmount(){
   return Number(amountStr.slice(8));
 }
 
-function sell(byAmount){
+function addToFunds(byAmount){
   let amount = getAmount();
   amount += byAmount;
 
   document.getElementById("funds").innerHTML = "Funds: $" + amount;
 }
+
+
 
 let machines = [
   [null,null,null],
@@ -27,4 +29,19 @@ function buy(id){
     machines[machineID][id] = setInterval(function() { add(machines[amount][id]) }, 1000);
     console.log(machines)
   }
+}
+function sell (ID, price){
+  if (Number(document.getElementById(ID).innerHTML) > 0){
+    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) -1
+    addToFunds(price)
+  }
+}
+
+function buyGroceries(ID, cost){
+  if (getAmount() >= cost){
+    addToFunds(-1 * cost);
+    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) + 1
+    console.log(document.getElementById(ID).innerHTML)
+  }
+
 }

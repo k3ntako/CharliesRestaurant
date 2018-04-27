@@ -1,3 +1,6 @@
+body {
+  background-color: #FFFFFF;
+}
 div.body {
   padding-left: 20px;
   padding-right: 20px;
@@ -5,6 +8,9 @@ div.body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  max-width: 1100px;
+  min-width: 1100px;
+  align-items: start;
 }
 
 div.nav{
@@ -18,21 +24,26 @@ div#funds{
   grid-row: 2;
 }
 
-div#materials {
+div#ingredients {
   grid-column: 1;
   grid-row: 3 ;
-  border-top: 10px #66FF66 solid;
+  border-top: 10px #00b159 solid;
 
 }
-div#kitchen{
+div#staff{
   grid-column: 2;
   grid-row: 3;
-  border-top: 10px #FF355E solid;
+  border-top: 10px #00aedb solid;
 }
 div#restaurant{
   grid-column: 3;
   grid-row: 3;
-  border-top: 10px #50BFE6 solid;
+  border-top: 10px #d11141 solid;
+}
+div#recipe{
+  grid-column: 1;
+  grid-row: 4;
+  border-top: 10px #ffc425 solid;
 }
 /**Grid inside sections**/
 div.section{
@@ -45,7 +56,6 @@ div.section{
   padding-top: 10px;
   padding-bottom: 10px;
   border-top: 10px gray solid;
-
 }
 
 
@@ -55,15 +65,7 @@ div.sectionHead{
   font-size: 1.5em;
   font-weight: bold;
   padding-top: 5px;
-}
 
-div.sectionSubHead{
-  grid-column: 1/ span 3;
-  grid-row: 2;
-  font-size: 1em;
-  font-weight: bold;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 div.sectionLeft{
@@ -79,6 +81,15 @@ div.sectionRight{
 
 }
 
-p{
+p.sectionSubHead{
+  grid-column: 1/ span 3;
+  grid-row: 2;
+  font-size: 1em;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+p.sectionList, p.sectionSubHead{
   height: 20px;
 }

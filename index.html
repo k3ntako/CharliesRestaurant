@@ -13,54 +13,60 @@
     </div>
 
     <div>
-      <h2 id = "funds">Funds: $0</h2>
+      <h2 id = "funds">Funds: $100</h2>
     </div>
 
-    <div id="materials" class="section">
+    <div id="ingredients" class="section">
       <div class="sectionHead">
-        Materials
+        Ingredients
       </div>
       <div class="sectionLeft">
-        <p>Burger Buns</p>
-        <p>Burger Patty</p>
-        <p>Tomatoes</p>
-        <p>Lettuce</p>
-        <p>Drinks</p>
+        <p class="sectionList">Burger Buns : $1</p>
+        <p class="sectionList">Burger Patty : $3</p>
+        <p class="sectionList">Tomatoes : $2</p>
+        <p class="sectionList">Lettuce : $1</p>
+        <p class="sectionList">Coke : $0.5</p>
       </div>
       <div class="sectionMiddle">
-        <p>0</p>
-        <p>0</p>
-        <p>0</p>
-        <p>0</p>
-        <p>0</p>
+        <p class="sectionList" id="i0">0</p> <!--i for ingredients-->
+        <p class="sectionList" id="i1">0</p>
+        <p class="sectionList" id="i2">0</p>
+        <p class="sectionList" id="i3">0</p>
+        <p class="sectionList" id="i4">0</p>
       </div>
       <div class="sectionRight">
-        <p><button onclick="buyGroceries(0)">Buy</button></p>
-        <p><button onclick="buyGroceries(1)">Buy</button></p>
-        <p><button onclick="buyGroceries(2)">Buy</button></p>
-        <p><button onclick="buyGroceries(1)">Buy</button></p>
-        <p><button onclick="buyGroceries(3)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('i0',1)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('i1',3)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('i2',2)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('i3',1)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('i4',0.5)">Buy</button></p>
       </div>
     </div>
 
-    <div id="kitchen" class="section">
+    <div id="staff" class="section">
       <div class="sectionHead">
-        Kitchen
-      </div>
-      <div class="sectionSubHead">
-        Cooks
+        Staff
       </div>
       <div class="sectionLeft">
-        <p>John - $500</p> <!--add way to give details on each character-->
-        <p>Malo - $50000</p>
+        <p class="sectionSubHead">Gofer</p>
+        <p class="sectionList">Ponpon - $1000</p>
+        <p class="sectionSubHead">Cooks</p>
+        <p class="sectionList">John - $500</p> <!--add way to give details on each character-->
+        <p class="sectionList">Malo - $50000</p>
       </div>
       <div class="sectionMiddle">
-        <p><button onclick="buy(0)">Hire</button></p>
-        <p><button onclick="buy(1)">Hire</button></p>
+        <p class="sectionSubHead">Hire</p>
+        <p class="sectionList"><button onclick="buy(0)">Hire</button></p>
+        <p class="sectionSubHead">Hire</p>
+        <p class="sectionList"><button onclick="buy(0)">Hire</button></p>
+        <p class="sectionList"><button onclick="buy(1)">Hire</button></p>
       </div>
       <div class="sectionRight">
-        <p><button onclick="upgrade(0)">Send to School</button></p>
-        <p><button onclick="upgrade(1)">Send to School</button></p>
+        <p class="sectionSubHead"></p>
+        <p class="sectionList"></p>
+        <p class="sectionSubHead">Send to School</p>
+        <p class="sectionList"><button onclick="upgrade(0)">Send</button></p>
+        <p class="sectionList"><button onclick="upgrade(1)">Send</button></p>
       </div>
     </div>
 
@@ -69,13 +75,27 @@
         Restaurant
       </div>
       <div class="sectionLeft">
-        <p>Burger</p>
+        <p class="sectionList">Burger</p>
       </div>
       <div class="sectionMiddle">
-        <p>0</p> 
+        <p class="sectionList" id="r0">0</p>
       </div>
       <div class=sectionRight>
-        <p><button onclick="sell(100)">Sell</button></p>
+        <p class="sectionList"><button onclick="sell('r0',5)">Sell</button></p>
+      </div>
+    </div>
+    <div id="recipe" class="section">
+      <div class="sectionHead">
+        Recipe
+      </div>
+      <div class="sectionLeft">
+        <p class="sectionList">Burger</p>
+      </div>
+      <div class="sectionMiddle">
+        <p class="sectionList" id="r0">0</p>
+      </div>
+      <div class=sectionRight>
+        <p class="sectionList"><button onclick="sell('r0',5)">Sell</button></p>
       </div>
     </div>
   </div><!--Body-->

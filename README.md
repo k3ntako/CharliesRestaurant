@@ -1,10 +1,10 @@
 # Charlie's Restaurant
 ## This is a clicker game based on my friends:
-Charlie - Big Boss.
-Kobae - Dumb As A Block.
-Chocho - OG.
-Snoopy - Has other aspirations.
-Ponpon - The elder.
-Malo - Marshmallow and cow.
-Pundy - The double.
-Beary Bear - Big head.
+1. Charlie - Big Boss.
+2. Kobae - Dumb As A Block.
+3. Chocho - OG.
+4. Snoopy - Has other aspirations.
+5. Ponpon - The elder.
+6. Malo - Marshmallow and cow.
+7. Pundy - The double.
+8. Beary Bear - Big head.

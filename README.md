@@ -1,5 +1,5 @@
-#Charlie's Restaurant
-##This is a clicker game based on my friends:
+# Charlie's Restaurant
+## This is a clicker game based on my friends:
 Charlie - Big Boss.
 Kobae - Dumb As A Block.
 Chocho - OG.

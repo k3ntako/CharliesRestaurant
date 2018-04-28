@@ -81,6 +81,10 @@ div.sectionRight{
 
 }
 
+div.sectionAll{
+  grid-column: 1/ span 3;
+}
+
 p.sectionSubHead{
   grid-column: 1/ span 3;
   grid-row: 2;

@@ -17,18 +17,36 @@ function addToFunds(byAmount){
 }
 
 function timer(){
+  console.log("Start")
+  let hourCounter = 0
   setInterval (function(){
-    let day = document.getElementById("day").innerHTML.slice(3);
-    document.getElementById("day").innerHTML = "Day " + (Number(day) + 1);
+
+    if(hourCounter === 12){
+      let day = document.getElementById("day").innerHTML.slice(3);
+      document.getElementById("day").innerHTML = "Day " + (Number(day) + 1);
+      hourCounter = 0;
+    }
+    hourCounter += 1;
+
     for (let i = 0; i < activeStaff.length; i++) {
-      let staffInfo = staff[activeStaff[i]]
+      let staffInfo = staff[activeStaff[i]];
       if (staffInfo.employeeType = "gofer"){
         for(let j = 0; j < recipeBook["ingredients"].length; j++){
           buyGroceries(recipeBook["ingredients"][j], recipeBook["ingredientCosts"][j] * staffInfo["discount"])
         }
       }
     }
-  },5000)
+    //sell(burger)
+
+  },1000)
+}
+
+//Selling - Automated in Background
+function sell (ID, price){
+  if (Number(document.getElementById(ID).innerHTML) > 0){
+    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) -1
+    addToFunds(price)
+  }
 }
 
 //Groceries Functions
@@ -85,12 +103,4 @@ function makeFood(ID){
     document.getElementById(recipeBook["ingredients"][i]).innerHTML = Number(document.getElementById(recipeBook["ingredients"][i]).innerHTML) - recipeBook[ID][i]
   }
   document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) +1
-}
-
-//Selling - Automated in Background
-function sell (ID, price){
-  if (Number(document.getElementById(ID).innerHTML) > 0){
-    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) -1
-    addToFunds(price)
-  }
 }

@@ -6,14 +6,17 @@
   <script src="first.js"></script>
 
 </head>
-<body>
+<body onload="timer()">
   <div class = "body">
     <div class = "nav">
       <h1>Charlie's Restaurant</h1>
     </div>
 
-    <div>
-      <h2 id = "funds">Funds: $100</h2>
+    <div id="funds">
+      <h2 id="money">Funds: $100</h2>
+    </div>
+    <div id="dayCount">
+      <h2 id="day">Day 1</h2>
     </div>
 
     <div id="ingredients" class="section">
@@ -21,25 +24,28 @@
         Ingredients
       </div>
       <div class="sectionLeft">
-        <p class="sectionList">Burger Buns : $1</p>
-        <p class="sectionList">Burger Patty : $3</p>
-        <p class="sectionList">Tomatoes : $2</p>
-        <p class="sectionList">Lettuce : $1</p>
-        <p class="sectionList">Coke : $0.5</p>
+        <p class="sectionList">Burger Buns : $3</p>
+        <p class="sectionList">Burger Patty : $5</p>
+        <p class="sectionList">Tomatoes : $4</p>
+        <p class="sectionList">Lettuce : $3</p>
+          <p class="sectionList">Cheese : $2</p>
+        <p class="sectionList">Coke : $1</p>
       </div>
       <div class="sectionMiddle">
-        <p class="sectionList" id="i0">0</p> <!--i for ingredients-->
-        <p class="sectionList" id="i1">0</p>
-        <p class="sectionList" id="i2">0</p>
-        <p class="sectionList" id="i3">0</p>
-        <p class="sectionList" id="i4">0</p>
+        <p class="sectionList" id="buns">0</p> <!--i for ingredients-->
+        <p class="sectionList" id="patty">0</p>
+        <p class="sectionList" id="tomato">0</p>
+        <p class="sectionList" id="lettuce">0</p>
+        <p class="sectionList" id="cheese">0</p>
+        <p class="sectionList" id="coke">0</p>
       </div>
       <div class="sectionRight">
-        <p class="sectionList"><button onclick="buyGroceries('i0',1)">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('i1',3)">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('i2',2)">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('i3',1)">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('i4',0.5)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('buns',3)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('patty',5)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('tomato',4)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('lettuce',3)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('cheese',2)">Buy</button></p>
+        <p class="sectionList"><button onclick="buyGroceries('coke',1)">Buy</button></p>
       </div>
     </div>
 
@@ -56,10 +62,10 @@
       </div>
       <div class="sectionMiddle">
         <p class="sectionSubHead">Hire</p>
-        <p class="sectionList"><button onclick="buy(0)">Hire</button></p>
+        <p class="sectionList"><button onclick="hire('ponpon')">Hire</button></p>
         <p class="sectionSubHead">Hire</p>
-        <p class="sectionList"><button onclick="buy(0)">Hire</button></p>
-        <p class="sectionList"><button onclick="buy(1)">Hire</button></p>
+        <p class="sectionList"><button onclick="hire(0)">Hire</button></p>
+        <p class="sectionList"><button onclick="hire(1)">Hire</button></p>
       </div>
       <div class="sectionRight">
         <p class="sectionSubHead"></p>
@@ -81,13 +87,13 @@
       </div>
       <div class="sectionMiddle">
         <p class="sectionList" id="burger">0</p>
-        <p class="sectionList" id="r1">0</p>
-        <p class="sectionList" id="r2">0</p>
+        <p class="sectionList" id="cheeseBurger">0</p>
+        <p class="sectionList" id="lettuceBurger">0</p>
       </div>
       <div class=sectionRight>
-        <p class="sectionList"><button onclick="make('burger')">Make</button></p>
-        <p class="sectionList"><button onclick="make('r1',5)">Make</button></p>
-        <p class="sectionList"><button onclick="make('r2',5)">Make</button></p>
+        <p class="sectionList"><button onclick="makeFood('burger')">Make</button></p>
+        <p class="sectionList"><button onclick="makeFood('cheeseBurger')">Make</button></p>
+        <p class="sectionList"><button onclick="makeFood('lettuceBurger')">Make</button></p>
       </div>
     </div>
     <div id="recipe" class="section">

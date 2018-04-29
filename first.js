@@ -1,66 +1,96 @@
+//Essential Functions
 function getAmount(){
-  let amountStr = document.getElementById("funds").innerHTML;
+  let amountStr = document.getElementById("money").innerHTML
   return Number(amountStr.slice(8));
+}
+
+function checkFunds(amount){
+  console.log(amount)
+  return amount <= getAmount();
 }
 
 function addToFunds(byAmount){
   let amount = getAmount();
   amount += byAmount;
 
-  document.getElementById("funds").innerHTML = "Funds: $" + amount;
+  document.getElementById("money").innerHTML = "Funds: $" + amount.toFixed(2);
 }
 
+function timer(){
+  setInterval (function(){
+    let day = document.getElementById("day").innerHTML.slice(3);
+    document.getElementById("day").innerHTML = "Day " + (Number(day) + 1);
+    for (let i = 0; i < activeStaff.length; i++) {
+      let staffInfo = staff[activeStaff[i]]
+      if (staffInfo.employeeType = "gofer"){
+        for(let j = 0; j < recipeBook["ingredients"].length; j++){
+          buyGroceries(recipeBook["ingredients"][j], recipeBook["ingredientCosts"][j] * staffInfo["discount"])
+        }
+      }
+    }
+  },5000)
+}
 
+//Groceries Functions
+function buyGroceries(ID, cost){
+  if (checkFunds(cost)){
+    addToFunds(-1 * cost);
+    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) + 10;
+    console.log(document.getElementById(ID).innerHTML);
+  }else{
+    console.log("Not enough funds for groceries")
+  }
 
-let machines = [
-  [null,null,null],
-  [10,100,500],
-  [500, 1000, 5000]
-];
-function buy(id){
-  let machineID = 0
-  let amount = 1
-  let cost = 2
+}
 
-  if (getAmount() >= machines[cost][id]){
-    clearInterval(machines[machineID][id])
-    machines[amount][id] *= 2
-    sell(-1 * machines[cost][id])
-    machines[machineID][id] = setInterval(function() { add(machines[amount][id]) }, 1000);
-    console.log(machines)
+//staff
+let activeStaff = [];
+
+let staff = {
+  ponpon : {
+    employeeType : "gofer",
+    wage : 10,
+    buys : 10,
+    discount : 0.95
   }
 }
-function make(ID){
-  for(let i = 0; i < menu["burger"].length;i++){
-    if (Number(document.getElementById(menu["ingredients"][i]).innerHTML) < menu[ID][i]){
+
+function hire(ID){
+  if(checkFunds(staff[ID]["wage"])){
+    addToFunds(-1 * staff[ID]["wage"]);
+    activeStaff.push(ID)
+  }else{
+    console.log("Not enough funds to hire.");
+  };
+};
+
+//Kitchen
+let recipeBook = {
+  ingredients : ["buns","patty","tomato","lettuce","cheese","coke"],
+  ingredientCosts : [3,5,4,3,2,1],
+  burger : [1,1,1,1,0,0],
+  cheeseBurger : [1,1,1,1,1,0],
+  lettuceBurger : [1,1,1,3,1,0]
+
+}
+
+function makeFood(ID){
+  for(let i = 0; i < recipeBook["ingredients"].length;i++){
+    if (Number(document.getElementById(recipeBook["ingredients"][i]).innerHTML) < recipeBook[ID][i]){
+      console.log(ID)
       return;
     }
   }
-  for(let i = 0; i < menu["burger"].length;i++){
-    document.getElementById(menu["ingredients"][i]).innerHTML = Number(document.getElementById(menu["ingredients"][i]).innerHTML) - menu[ID][i]
+  for(let i = 0; i < recipeBook["ingredients"].length;i++){
+    document.getElementById(recipeBook["ingredients"][i]).innerHTML = Number(document.getElementById(recipeBook["ingredients"][i]).innerHTML) - recipeBook[ID][i]
   }
   document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) +1
-
 }
 
+//Selling - Automated in Background
 function sell (ID, price){
   if (Number(document.getElementById(ID).innerHTML) > 0){
     document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) -1
     addToFunds(price)
   }
-}
-
-function buyGroceries(ID, cost){
-  if (getAmount() >= cost){
-    addToFunds(-1 * cost);
-    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) + 1
-    console.log(document.getElementById(ID).innerHTML)
-  }
-
-}
-
-let menu = {
-  ingredients : ["i0","i1","i2","i3","i4"],
-  burger : [1,1,1,1,0],
-  cheeseBurger : [1,1,1,1,0]
 }

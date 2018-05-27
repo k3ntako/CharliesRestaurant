@@ -21,7 +21,7 @@ function addToFunds(byAmount){
 
 function timer(){ //runs every 1 second; a day is 12 seconds
   console.log("Start")
-  let hourCounter = 0
+  let hourCounter = 0;
   setInterval (function(){
     //changes day count
     if(hourCounter === 12){
@@ -35,14 +35,19 @@ function timer(){ //runs every 1 second; a day is 12 seconds
       let staffInfo = staff[activeStaff[i]];
       if (staffInfo.employeeType = "gofer"){
         for (let key in recipeBook["ingredientCosts"]){
-          buyGroceries(key, staffInfo["discount"])
+          buyGroceries(key, staffInfo["discount"]);
+        }
+      }
+      if (staffInfo.employeeType = "cook"){
+        for (let key in staffInfo.cooks){
+          makeFood(key);
         }
       }
     }
 
     //sells burger based on demand
     if(demandCalc() > 0.3){
-      sell("burger", 3)
+      sell("burger", 3);
     }
 
 
@@ -52,8 +57,8 @@ function timer(){ //runs every 1 second; a day is 12 seconds
 //Selling - Automated in Background
 function sell (ID, price){
   if (Number(document.getElementById(ID).innerHTML) > 0){
-    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) -1
-    addToFunds(price)
+    document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) -1;
+    addToFunds(price);
   }
 }
 
@@ -72,7 +77,6 @@ function buyGroceries(ID, multiplier = 1){
   }else{
     console.log("Not enough funds for groceries", ID)
   }
-
 }
 
 //staff
@@ -85,6 +89,14 @@ let staff = {
     wage : 10,
     buys : 10,
     discount : 0.95
+  },
+  bearyBear : {
+    employeeType : "cook",
+    wage : 10,
+    cooks : {
+      burger : 1,
+      cheeseBurger : 1
+    }
   }
 }
 

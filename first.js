@@ -29,6 +29,7 @@ function timer(){ //runs every 1 second; a day is 12 seconds
       document.getElementById("day").innerHTML = "Day " + (Number(day) + 1);
       hourCounter = 0;
     }
+    
     hourCounter += 1;
     //gets the list of active employees and has each one do their job
     for (let i = 0; i < activeStaff.length; i++) {

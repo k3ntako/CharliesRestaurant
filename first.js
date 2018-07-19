@@ -29,7 +29,7 @@ function timer(){ //runs every 1 second; a day is 12 seconds
       document.getElementById("day").innerHTML = "Day " + (Number(day) + 1);
       hourCounter = 0;
     }
-    
+
     hourCounter += 1;
     //gets the list of active employees and has each one do their job
     for (let i = 0; i < activeStaff.length; i++) {
@@ -48,7 +48,7 @@ function timer(){ //runs every 1 second; a day is 12 seconds
 
     //sells burger based on demand
     if(demandCalc() > 0.3){
-      sell("burger", 3);
+      sell("burger", recipeBook["burger"]["cost"]);
     }
 
 
@@ -59,12 +59,13 @@ function timer(){ //runs every 1 second; a day is 12 seconds
 function sell (ID, price){
   if (Number(document.getElementById(ID).innerHTML) > 0){
     document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) -1;
+    document.getElementById(ID + "Total").innerHTML = Number(document.getElementById(ID + "Total").innerHTML) +1;
     addToFunds(price);
   }
 }
 
 function demandCalc(){
-  let num = Math.random();
+  let num = Math.random(); //maybe a bit more complex in the future
   return num;
 }
 
@@ -124,10 +125,13 @@ let recipeBook = {
     buns : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 0, coke : 0, cost : 3
   },
   cheeseBurger : {
-    buns : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 0, coke : 0, cost : 4
+    buns : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 1, coke : 0, cost : 4
   },
   lettuceBurger : {
     buns : 1, patty : 1, tomato : 1, lettuce : 3,cheese : 0, coke : 0, cost : 3
+  },
+  coke : {
+    buns : 0, patty : 0, tomato : 0, lettuce : 0,cheese : 0, coke : 1, cost : 1.5
   }
 }
 
@@ -145,4 +149,16 @@ function makeFood(ID){
     document.getElementById(key).innerHTML = Number(document.getElementById(key).innerHTML) - recipeBook[ID][key]
   }
   document.getElementById(ID).innerHTML = Number(document.getElementById(ID).innerHTML) +1
+
+}
+
+function adjustPrice(ID, adustAmount){
+  let originalPrice = Number(recipeBook[ID]["cost"]);
+
+  if (originalPrice + adustAmount > 0){
+    recipeBook[ID]["cost"] = Number((originalPrice + adustAmount).toFixed(2));
+    document.getElementById(ID + "Price").innerHTML =  "$" + recipeBook[ID]["cost"].toFixed(2);
+  }else{
+    console.log("Price has to be greater than 0.");
+  }
 }

@@ -4,8 +4,8 @@
   <title>Charlie's Restaurant</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="first.js"></script>
-
 </head>
+
 <body onload="timer()">
   <div class = "body">
     <div class = "nav">
@@ -18,95 +18,158 @@
     <div id="dayCount">
       <h2 id="day">Day 1</h2>
     </div>
-
-
-    <div id="ingredients" class="section">
+    <div id="ingredients" class="sectionMedium">
       <div class="sectionHead">
         Ingredients
       </div>
-      <div class="sectionLeft">
-        <p class="sectionList">Burger Buns : $3</p>
-        <p class="sectionList">Burger Patty : $5</p>
-        <p class="sectionList">Tomatoes : $4</p>
-        <p class="sectionList">Lettuce : $3</p>
-          <p class="sectionList">Cheese : $2</p>
-        <p class="sectionList">Coke : $1</p>
+      <div class="subsection">
+        <p class="subsectionListHead">Ingredient</p>
+        <p class="subsectionList">Burger Buns : $3</p>
+        <p class="subsectionList">Burger Patty : $5</p>
+        <p class="subsectionList">Tomatoes : $4</p>
+        <p class="subsectionList">Lettuce : $3</p>
+        <p class="subsectionList">Cheese : $2</p>
+        <p class="subsectionList">Coke : $1</p>
       </div>
-      <div class="sectionMiddle">
-        <p class="sectionList" id="buns">0</p>
-        <p class="sectionList" id="patty">0</p>
-        <p class="sectionList" id="tomato">0</p>
-        <p class="sectionList" id="lettuce">0</p>
-        <p class="sectionList" id="cheese">0</p>
-        <p class="sectionList" id="coke">0</p>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead">Inventory</p>
+        <p class="subsectionList" id="buns">0</p>
+        <p class="subsectionList" id="patty">0</p>
+        <p class="subsectionList" id="tomato">0</p>
+        <p class="subsectionList" id="lettuce">0</p>
+        <p class="subsectionList" id="cheese">0</p>
+        <p class="subsectionList" id="coke">0</p>
       </div>
-      <div class="sectionRight">
-        <p class="sectionList"><button onclick="buyGroceries('buns')">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('patty')">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('tomato')">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('lettuce')">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('cheese')">Buy</button></p>
-        <p class="sectionList"><button onclick="buyGroceries('coke')">Buy</button></p>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead"></p>
+        <p class="subsectionList"><button onclick="buyGroceries('buns')">Buy</button></p>
+        <p class="subsectionList"><button onclick="buyGroceries('patty')">Buy</button></p>
+        <p class="subsectionList"><button onclick="buyGroceries('tomato')">Buy</button></p>
+        <p class="subsectionList"><button onclick="buyGroceries('lettuce')">Buy</button></p>
+        <p class="subsectionList"><button onclick="buyGroceries('cheese')">Buy</button></p>
+        <p class="subsectionList"><button onclick="buyGroceries('coke')">Buy</button></p>
+      </div>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead"># Bought</p>
+        <p class="subsectionList" id="buns">0</p>
+        <p class="subsectionList" id="patty">0</p>
+        <p class="subsectionList" id="tomato">0</p>
+        <p class="subsectionList" id="lettuce">0</p>
+        <p class="subsectionList" id="cheese">0</p>
+        <p class="subsectionList" id="coke">0</p>
+      </div>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead">Demand</p>
+        <p class="subsectionList">1</p>
+        <p class="subsectionList">1</p>
+        <p class="subsectionList">1</p>
+        <p class="subsectionList">1</p>
+        <p class="subsectionList">1</p>
+        <p class="subsectionList">1</p>
+      </div>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead"># Bought</p>
+        <p class="subsectionList" id="bunsTotal">0</p>
+        <p class="subsectionList" id="pattyTotal">0</p>
+        <p class="subsectionList" id="tomatoTotal">0</p>
+        <p class="subsectionList" id="lettuceTotal">0</p>
+        <p class="subsectionList" id="cheeseTotal">0</p>
+        <p class="subsectionList" id="cokeTotal">0</p>
       </div>
     </div>
 
-    <div id="staff" class="section">
+    <div id="staff" class="sectionSmall">
       <div class="sectionHead">
         Staff
       </div>
-      <div class="sectionLeft">
-        <p class="sectionSubHead">Gofer</p>
-        <p class="sectionList">Ponpon - $1000</p>
-        <p class="sectionSubHead">Cooks</p>
-        <p class="sectionList">Beary Bear - $500</p> <!--add way to give details on each character-->
-        <p class="sectionList">Malo - $50000</p>
+      <div class="subsection">
+        <p class="subsectionListHead">Gofer</p>
+        <p class="subsectionList">Ponpon - $1000</p>
+        <p class="subsectionListHead">Cooks</p>
+        <p class="subsectionList">Beary Bear - $500</p> <!--add way to give details on each character-->
+        <p class="subsectionList">Malo - $50000</p>
       </div>
-      <div class="sectionMiddle">
-        <p class="sectionSubHead">Hire</p>
-        <p class="sectionList"><button onclick="hire('ponpon')">Hire</button></p>
-        <p class="sectionSubHead">Hire</p>
-        <p class="sectionList"><button onclick="hire('bearyBear')">Hire</button></p>
-        <p class="sectionList"><button onclick="hire(1)">Hire</button></p>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead"></p>
+        <p class="subsectionList"><button onclick="hire('ponpon')">Hire</button></p>
+        <p class="subsectionListHead"></p>
+        <p class="subsectionList"><button onclick="hire('bearyBear')">Hire</button></p>
+        <p class="subsectionList"><button onclick="hire(1)">Hire</button></p>
       </div>
-      <div class="sectionRight">
-        <p class="sectionSubHead"></p>
-        <p class="sectionList"></p>
-        <p class="sectionSubHead">Send to School</p>
-        <p class="sectionList"><button onclick="upgrade(0)">Send</button></p>
-        <p class="sectionList"><button onclick="upgrade(1)">Send</button></p>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead"></p>
+        <p class="subsectionList"></p>
+        <p class="subsectionListHead">Send to School</p>
+        <p class="subsectionList"><button onclick="upgrade(0)">Send</button></p>
+        <p class="subsectionList"><button onclick="upgrade(1)">Send</button></p>
       </div>
     </div>
 
-    <div id="restaurant" class="section">
+    <div id="restaurant" class="sectionMedium">
       <div class="sectionHead">
         Restaurant
       </div>
-      <div class="sectionLeft">
-        <p class="sectionList">Burger</p>
-        <p class="sectionList">Cheese Burger</p>
-        <p class="sectionList">Lettuce Burger</p>
+      <div class="subsection">
+        <p class="subsectionListHead">Product</p>
+        <p class="subsectionList">Burger</p>
+        <p class="subsectionList">Cheese Burger</p>
+        <p class="subsectionList">Lettuce Burger</p>
+        <p class="subsectionList">Coke</p>
       </div>
-      <div class="sectionMiddle">
-        <p class="sectionList" id="burger">0</p>
-        <p class="sectionList" id="cheeseBurger">0</p>
-        <p class="sectionList" id="lettuceBurger">0</p>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead">Inventory</p>
+        <p class="subsectionList" id="burger">0</p>
+        <p class="subsectionList" id="cheeseBurger">0</p>
+        <p class="subsectionList" id="lettuceBurger">0</p>
+        <p class="subsectionList" id="coke">0</p>
       </div>
-      <div class=sectionRight>
-        <p class="sectionList"><button onclick="makeFood('burger')">Make</button></p>
-        <p class="sectionList"><button onclick="makeFood('cheeseBurger')">Make</button></p>
-        <p class="sectionList"><button onclick="makeFood('lettuceBurger')">Make</button></p>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead"></p>
+        <p class="subsectionList"><button onclick="makeFood('burger')">Make</button></p>
+        <p class="subsectionList"><button onclick="makeFood('cheeseBurger')">Make</button></p>
+        <p class="subsectionList"><button onclick="makeFood('lettuceBurger')">Make</button></p>
+        <p class="subsectionList"></p>
+      </div>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead">Price</p>
+        <p class="subsectionList" id="burgerPrice">$3.00</p>
+        <p class="subsectionList" id="cheeseBurgerPrice">$4.00</p>
+        <p class="subsectionList" id="lettuceBurgerPrice">$3.00</p>
+        <p class="subsectionList" id="cokePrice">$1.50</p>
+      </div>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead">Adjust Price</p>
+        <p class="subsectionList" class="priceAdjust"><button onclick="adjustPrice('burger',-0.1)">-</button><button onclick="adjustPrice('burger',0.1)">+</button></p>
+        <p class="subsectionList" class="priceAdjust"><button onclick="adjustPrice('cheeseBurger',-0.1)">-</button><button onclick="adjustPrice('cheeseBurger',0.1)">+</button></p>
+        <p class="subsectionList" class="priceAdjust"><button onclick="adjustPrice('lettuceBurger',-0.1)">-</button><button onclick="adjustPrice('lettuceBurger',0.1)">+</button></p>
+        <p class="subsectionList" class="priceAdjust"><button onclick="adjustPrice('coke',-0.1)">-</button><button onclick="adjustPrice('coke',0.1)">+</button></p>
+      </div>
+      <div class="subsectionCentered">
+        <p class="subsectionListHead"># Total Sold</p>
+        <p class="subsectionList" id="burgerTotal">0</p>
+        <p class="subsectionList" id="cheeseBurgerTotal">0</p>
+        <p class="subsectionList" id="lettuceBurgerTotal">0</p>
+        <p class="subsectionList" id="cokeTotal">0</p>
       </div>
     </div>
-    <div id="recipe" class="section">
+
+    <div id="recipe" class="sectionSmall">
       <div class="sectionHead">
         Recipe
       </div>
       <div class="sectionAll">
-        <p class="sectionList">Burger = Tomato, Lettuce, Patty, Bun</p>
-        <p class="sectionList">Cheese Burger = Burger + Cheese</p>
-        <p class="sectionList">Lettuce Burger = Patty + 3 Lettuce + Tomato</p>
+        <p class="subsectionList">Burger = Tomato, Lettuce, Patty, Bun</p>
+        <p class="subsectionList">Cheese Burger = Burger + Cheese</p>
+        <p class="subsectionList">Lettuce Burger = Patty + 3 Lettuce + Tomato</p>
       </div>
     </div>
+
+    <div class="bottom">
+      <hr>
+
+      <a href = "https://k3ntako.weebly.com/" id = "weebly">K3ntako</a>, 2018
+    </div>
+
   </div><!--Body-->
 </body>
 </html>

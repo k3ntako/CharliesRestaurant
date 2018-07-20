@@ -19,18 +19,30 @@ function addToFunds(byAmount){
   document.getElementById("money").innerHTML = "Funds: $" + amount.toFixed(2);
 }
 
+function displayDate(date){
+  console.log(date)
+  let fullDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+  document.getElementById("day").innerHTML = fullDate;
+}
+
 function timer(){ //runs every 1 second; a day is 12 seconds
   console.log("Start")
-  let hourCounter = 0;
+  let currentDate = new Date;
+  displayDate(currentDate);
+
+  let realTimeCounter = 0;
   setInterval (function(){
     //changes day count
-    if(hourCounter === 12){
-      let day = document.getElementById("day").innerHTML.slice(3);
-      document.getElementById("day").innerHTML = "Day " + (Number(day) + 1);
-      hourCounter = 0;
+    if(realTimeCounter === 12){
+      //let day = document.getElementById("day").innerHTML.slice(3);
+      //document.getElementById("day").innerHTML = "Day " + (Number(day) + 1);
+      currentDate.setDate(currentDate.getDate() + 1)
+      displayDate(currentDate);
+
+      realTimeCounter = 0;
     }
 
-    hourCounter += 1;
+    realTimeCounter += 1; //when 12 real seconds pass, it's a day
     //gets the list of active employees and has each one do their job
     for (let i = 0; i < activeStaff.length; i++) {
       let staffInfo = staff[activeStaff[i]];
@@ -117,9 +129,9 @@ let recipeBook = {
     buns : 3,
     patty : 5,
     tomato : 4,
-    lettuce : 3,
+    lettuce : 0.10,
     cheese : 2,
-    coke : 1
+    coke : 0.50
   },
   burger : {
     buns : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 0, coke : 0, cost : 3

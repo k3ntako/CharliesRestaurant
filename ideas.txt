@@ -1,0 +1,6 @@
+﻿Have things rot if food is left in inventory too long.
+
+Have version where the day is a full day.
+
+Colors:
+https://www.quackit.com/css/css_color_codes.cfm

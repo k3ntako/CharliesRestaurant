@@ -1,5 +1,5 @@
 body {
-  background-color: lightblue;
+  background-color: #000; /** #F3AA01 **/
 }
 div.body {
   background: white;
@@ -32,6 +32,7 @@ div#dayCount{
   grid-column: 3 / span 1;
   grid-row: 2;
   text-align: right;
+  border-top: black solid 1px;
 }
 
 div#ingredients {

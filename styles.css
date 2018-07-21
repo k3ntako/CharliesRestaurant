@@ -1,6 +1,12 @@
 body {
-  background-color: #000; /** #F3AA01 **/
+  background-color: #F3AA01;
 }
+
+@font-face {
+  font-family: 'Mosk';
+  src: url("fonts/Mosk/Mosk-Light-300.ttf"); /* File to be stored at your site */
+  }
+
 div.body {
   background: white;
   padding-left: 50px;
@@ -14,7 +20,7 @@ div.body {
   min-width: 1100px;
   align-items: start;
   margin: auto;
-
+  font-family: "Mosk";
 }
 
 div.nav{
@@ -32,7 +38,6 @@ div#dayCount{
   grid-column: 3 / span 1;
   grid-row: 2;
   text-align: right;
-  border-top: black solid 1px;
 }
 
 div#ingredients {
@@ -45,6 +50,7 @@ div#staff{
   grid-column: 3;
   grid-row: 4;
   border-top: 10px #00aedb solid;
+  visibility: hidden;
 }
 div#restaurant{
   grid-column: 1 / span 2;
@@ -56,7 +62,7 @@ div#recipe{
   grid-row: 3;
   border-top: 10px #ffc425 solid;
 }
-div#stats{
+div#research{
   grid-column: 1 / span 3;
   grid-row: 5;
   border-top: 10px #000000 solid;
@@ -116,7 +122,7 @@ p.subsectionList, p.subsectionListHead{
 /**Bottom**/
 div.bottom {
   grid-column: 1/ span 3;
-  grid-row: 5;
+  grid-row: 6;
   text-align: center;
 }
 

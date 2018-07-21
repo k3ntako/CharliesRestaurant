@@ -30,9 +30,6 @@ function timer(){ //runs every 1 second; a day is 12 seconds
   //Date
   let currentDate = new Date;
   displayDate(currentDate);
-  //Color - Hour
-  //background color changes every second (every two hours in the game)
-  let bgColors = ["#000","#000","#240f00", "#F2C649", "#FED85D", "#8FD8D8","#95E0E8","#6CDAE7", "#76D7EA","#FFB97B","#E77200","#000"  ]
   let realTimeCounter = 0;
 
   setInterval (function(){
@@ -45,15 +42,16 @@ function timer(){ //runs every 1 second; a day is 12 seconds
 
       realTimeCounter = 0;
     }
-    document.body.style.backgroundColor = bgColors[realTimeCounter];
 
     realTimeCounter += 1; //when 12 real seconds pass, it's a day
     //gets the list of active employees and has each one do their job
     for (let i = 0; i < activeStaff.length; i++) {
       let staffInfo = staff[activeStaff[i]];
       if (staffInfo.employeeType = "gofer"){
-        for (let key in recipeBook["ingredientCosts"]){
-          buyGroceries(key, staffInfo["discount"]);
+        if(checkFunds(14.6)){
+          for (let key in recipeBook["ingredientCosts"]){
+            buyGroceries(key, staffInfo["discount"]);
+          }
         }
       }
       if (staffInfo.employeeType = "cook"){
@@ -64,8 +62,17 @@ function timer(){ //runs every 1 second; a day is 12 seconds
     }
 
     //sells burger based on demand
-    if(demandCalc() > 0.3){
+    if(demandCalc() < 0.9){
       sell("burger", recipeBook["burger"]["cost"]);
+    }
+    if(demandCalc() <0.8){
+      sell("cheeseBurger", recipeBook["cheeseBurger"]["cost"]);
+    }
+    if(demandCalc() < 0.3){
+      sell("lettuceBurger", recipeBook["lettuceBurger"]["cost"]);
+    }
+    if(demandCalc() < 0.8){
+      sell("coke", recipeBook["coke"]["cost"]);
     }
 
 
@@ -126,6 +133,13 @@ function hire(ID){
   }else{
     console.log("Not enough funds to hire.");
   };
+};
+
+function fire(ID){
+  var index = array.indexOf(ID);
+  if (index > -1) {
+    activeStaff.splice(index, 1);
+  }
 };
 
 //Kitchen

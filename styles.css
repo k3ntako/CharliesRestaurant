@@ -26,7 +26,7 @@ div.body {
 div.nav{
   grid-column: 1 / span 3;
   grid-row: 1;
-
+  .flush
 }
 
 div#funds{
@@ -44,23 +44,26 @@ div#ingredients {
   grid-column: 1 / span 2;
   grid-row: 3 ;
   border-top: 10px #00b159 solid;
-
+  height: 90%;
 }
 div#staff{
   grid-column: 3;
   grid-row: 4;
   border-top: 10px #00aedb solid;
-  visibility: hidden;
+  visibility: ;
+  height: 90%;
 }
 div#restaurant{
   grid-column: 1 / span 2;
   grid-row: 4;
   border-top: 10px #d11141 solid;
+  height: 90%;
 }
 div#recipe{
   grid-column: 3;
   grid-row: 3;
   border-top: 10px #ffc425 solid;
+  height: 90%;
 }
 div#research{
   grid-column: 1 / span 3;
@@ -102,8 +105,12 @@ div.subsectionCentered{
   text-align: center;
 }
 
-div.sectionAll{
-  grid-column: 1/ span 3;
+div.sectionSpanTwo{
+  grid-column: 2/ span 2;
+}
+
+div.sectionSpanThree{
+  grid-column: 2/ span 3;
 }
 
 p.subsectionListHead{
@@ -113,10 +120,6 @@ p.subsectionListHead{
   font-weight: bold;
   padding-top: 5px;
   padding-bottom: 5px;
-}
-
-p.subsectionList, p.subsectionListHead{
-  height: 20px;
 }
 
 /**Bottom**/

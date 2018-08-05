@@ -7,6 +7,10 @@ body {
   src: url("fonts/Mosk/Mosk-Light-300.ttf"); /* File to be stored at your site */
   }
 
+div{
+  /* border: 1px solid black; */
+}
+
 div.body {
   background: white;
   padding-left: 50px;
@@ -26,7 +30,17 @@ div.body {
 div.nav{
   grid-column: 1 / span 3;
   grid-row: 1;
-  .flush
+}
+
+/* Each Box */
+div.box{
+  border-radius: 25px;
+  background-color: #EEEEEE;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 10px gray solid;
 }
 
 div#funds{
@@ -42,7 +56,7 @@ div#dayCount{
 
 div#ingredients {
   grid-column: 1 / span 2;
-  grid-row: 3 ;
+  grid-row: 3;
   border-top: 10px #00b159 solid;
   height: 90%;
 }
@@ -70,16 +84,14 @@ div#research{
   grid-row: 5;
   border-top: 10px #000000 solid;
 }
+
+span.react {
+
+
+}
 /**Grid inside sections**/
 div.sectionSmall,div.sectionMedium,div.sectionLarge{
   display: grid;
-  border-radius: 25px;
-  background-color: #EEEEEE;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-top: 10px gray solid;
 }
 div.sectionSmall{
   grid-template-columns: 1fr 1fr 1fr;
@@ -120,6 +132,11 @@ p.subsectionListHead{
   font-weight: bold;
   padding-top: 5px;
   padding-bottom: 5px;
+  height: 20px;
+}
+
+p.subsectionList{
+  height: 20px;
 }
 
 /**Bottom**/

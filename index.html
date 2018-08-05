@@ -1,30 +1,41 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Charlie's Restaurant</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <script src="first.js"></script>
+
+  <!--<script src="first.js"></script>-->
+
+  <!-- ReactJS -->
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
-<body onload="timer()">
+ <body> <!--onload="timer()"-->
+  <!--ReactJS-->
+
+
   <div class = "body">
     <div class = "nav">
-      <h1>CHARLIE'S RESTAURANT</h1>
+      <h1>Charlie's Restaurant</h1>
     </div>
 
-    <div id="funds">
-      <h2 id="money">Funds: $100</h2>
-    </div>
-    <div id="dayCount">
-      <h2 id="day">Day 1</h2>
-    </div>
-    <div id="ingredients" class="sectionMedium">
+    <div id="funds"></div>
+
+    <div id="dayCount"></div>
+
+    <div id="ingredients" class = "box"></div>
+    <div id="recipe" class = "box"></div>
+    <!--<div id="ingredients" class="sectionMedium">
       <div class="sectionHead">
         Ingredients
       </div>
       <div class="subsection">
         <p class="subsectionListHead">Ingredient</p>
-        <p class="subsectionList">Burger Buns</p>
+        <p class="subsectionList">Burger Bun</p>
         <p class="subsectionList">Burger Patty</p>
         <p class="subsectionList">Tomatoes</p>
         <p class="subsectionList">Lettuce Slice</p>
@@ -42,7 +53,7 @@
       </div>
       <div class="subsectionCentered">
         <p class="subsectionListHead">Inventory</p>
-        <p class="subsectionList" id="buns">0</p>
+        <p class="subsectionList" id="bun">0</p>
         <p class="subsectionList" id="patty">0</p>
         <p class="subsectionList" id="tomato">0</p>
         <p class="subsectionList" id="lettuce">0</p>
@@ -51,7 +62,7 @@
       </div>
       <div class="subsectionCentered">
         <p class="subsectionListHead"></p>
-        <p class="subsectionList"><button onclick="buyGroceries('buns')">Buy</button></p>
+        <p class="subsectionList"><button onclick="buyGroceries('bun')">Buy</button></p>
         <p class="subsectionList"><button onclick="buyGroceries('patty')">Buy</button></p>
         <p class="subsectionList"><button onclick="buyGroceries('tomato')">Buy</button></p>
         <p class="subsectionList"><button onclick="buyGroceries('lettuce')">Buy</button></p>
@@ -69,16 +80,15 @@
       </div>
       <div class="subsectionCentered">
         <p class="subsectionListHead"># Bought</p>
-        <p class="subsectionList" id="bunsTotal">0</p>
+        <p class="subsectionList" id="bunTotal">0</p>
         <p class="subsectionList" id="pattyTotal">0</p>
         <p class="subsectionList" id="tomatoTotal">0</p>
         <p class="subsectionList" id="lettuceTotal">0</p>
         <p class="subsectionList" id="cheeseTotal">0</p>
         <p class="subsectionList" id="">0</p>
       </div>
-    </div>
-
-    <div id="staff" class="sectionSmall" >
+    </div>-->
+    <div id="staff" class="sectionSmall" class = "box">
       <div class="sectionHead">
         Staff
       </div>
@@ -153,7 +163,7 @@
       </div>
     </div>
 
-    <div id="recipe" class="sectionSmall">
+    <!-- <div id="recipe" class="sectionSmall">
       <div class="sectionHead">
         Recipe
       </div>
@@ -167,9 +177,9 @@
         <p class="subsectionList">Burger + Cheese</p>
         <p class="subsectionList">Patty + 3 Lettuce + Tomato</p>
       </div>
-    </div>
+    </div> -->
 
-    <div id="research" class="sectionMedium">
+    <div id="research" class="sectionLarge">
       <div class="sectionHead">
         Research
       </div>
@@ -192,5 +202,6 @@
     </div>
 
   </div><!--Body-->
+  <script type="text/babel" src = "react.jsx"></script>
 </body>
 </html>

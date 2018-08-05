@@ -145,7 +145,7 @@ function fire(ID){
 //Kitchen
 let recipeBook = {
   ingredientCosts : {
-    buns : 3,
+    bun : 3,
     patty : 5,
     tomato : 4,
     lettuce : 0.10,
@@ -153,16 +153,16 @@ let recipeBook = {
     coke : 0.50
   },
   burger : {
-    buns : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 0, coke : 0, cost : 3
+    bun : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 0, coke : 0, cost : 3
   },
   cheeseBurger : {
-    buns : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 1, coke : 0, cost : 4
+    bun : 1, patty : 1, tomato : 1, lettuce : 1,cheese : 1, coke : 0, cost : 4
   },
   lettuceBurger : {
-    buns : 1, patty : 1, tomato : 1, lettuce : 3,cheese : 0, coke : 0, cost : 3
+    bun : 1, patty : 1, tomato : 1, lettuce : 3,cheese : 0, coke : 0, cost : 3
   },
   coke : {
-    buns : 0, patty : 0, tomato : 0, lettuce : 0,cheese : 0, coke : 1, cost : 1.5
+    bun : 0, patty : 0, tomato : 0, lettuce : 0,cheese : 0, coke : 1, cost : 1.5
   }
 }
 

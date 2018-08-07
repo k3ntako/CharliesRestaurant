@@ -3,8 +3,8 @@ function RestaurantFunds(props){
 }
 
 ReactDOM.render(
-    <RestaurantFunds funds = {"100"} />,
-    document.getElementById("funds")
+  <RestaurantFunds funds = {"100"} />,
+  document.getElementById("funds")
 )
 
 function DayCount(props){
@@ -12,8 +12,8 @@ function DayCount(props){
 }
 
 ReactDOM.render(
-    <DayCount day = {"1"} />,
-    document.getElementById("dayCount")
+  <DayCount day = {"1"} />,
+  document.getElementById("dayCount")
 )
 
 
@@ -22,10 +22,10 @@ ReactDOM.render(
 function SubsectionList(props){return <p className="subsectionList">{props.item}</p>}
 
 function CreateButton(props){
-    function buyGroceries(){
-      console.log("BUY!", props.food, new Date().toLocaleString())
-    }
-    return <p className="subsectionList"><button onClick={buyGroceries}>Buy</button></p>
+  function buyGroceries(){
+    console.log("BUY!", props.food, new Date().toLocaleString())
+  }
+  return <p className="subsectionList"><button onClick={buyGroceries}>Buy</button></p>
 }
 
 
@@ -34,7 +34,7 @@ function CreateList(props) {
   let outputList = []
   let inputList = props.listItems
 
-  if ( props.repeat != 0){
+  if (props.repeat != 0){
     // for columns where the starting value is the same for all rows
     for(let i = 0; i < props.repeat; i++){
       outputList.push(<SubsectionList item = {inputList} />)
@@ -42,14 +42,23 @@ function CreateList(props) {
   }else{
     //for columns where each row is taken from the array passed through
     if (props.button){
-      console.log("Button")
       inputList.forEach(function(id){outputList.push(<CreateButton food = {id}/>)})
-      console.log("Button Done")
     }else{
       inputList.forEach(function(item){outputList.push(<SubsectionList item = {item} />)})
     }
   }
-  return outputList
+  return (
+    outputList
+  )
+}
+
+function CreateSubsection(props){
+  return(
+    <div className={props.sectionType}>
+      <p className="subsectionListHead">{props.subsectionHead}</p>
+      <CreateList listItems = {props.listItems} repeat = {props.repeat} button = {props.button} />
+    </div>
+  )
 }
 
 //fill in ingredient box
@@ -62,37 +71,43 @@ function IngBoxes (props){
   return(
     <div class="sectionMedium">
       <div className = "sectionHead">{props.sectionHead}</div>
-      <div className = "subsection">
+        <CreateSubsection sectionType = {"subsection"} subsectionHead = {"Ingredient"} listItems = {ing} repeat = {0} button = {false} />
+      {/* <div className = "subsection">
         <p class="subsectionListHead">Ingredient</p>
         <CreateList listItems = {ing} repeat = {0} button = {false} />
-      </div>
-      <div className = "subsectionCentered">
+      </div> */}
+        <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Cost"} listItems = {prices} repeat = {0} button = {false} />
+      {/* <div className = "subsectionCentered">
         <p class="subsectionListHead">Cost</p>
-        <CreateList listItems = {prices} repeat = {0} button = {false} />
-      </div>
-      <div className = "subsectionCentered">
+        <CreateList  />
+      </div> */}
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {"0"} repeat = {listLength}  button = {false} />
+      {/* <div className = "subsectionCentered">
         <p class="subsectionListHead">Inventory</p>
         <CreateList listItems = {"0"} repeat = {listLength}  button = {false}/>
-      </div>
-      <div className = "subsectionCentered">
+      </div> */}
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {ids} repeat = {0} button = {true} />
+      {/* <div className = "subsectionCentered">
         <p class="subsectionListHead"></p>
         <CreateList  listItems = {ids} repeat = {0} button = {true}/>
-      </div>
-      <div className = "subsectionCentered">
+      </div> */}
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Demand"} listItems = {"1"} repeat = {listLength} button = {false} />
+      {/* <div className = "subsectionCentered">
         <p class="subsectionListHead">Demand</p>
         <CreateList listItems = {"1"} repeat = {listLength} button = {false}/>
-      </div>
-      <div className = "subsectionCentered">
+      </div> */}
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"# Bought"} listItems = {"0"} repeat = {listLength} button = {false} />
+      {/* <div className = "subsectionCentered">
         <p class="subsectionListHead"># Bought</p>
         <CreateList listItems = {"0"} repeat = {listLength} button = {false}/>
-      </div>
+      </div> */}
     </div>
   )
 }
 
 ReactDOM.render(
-    <IngBoxes id = "ingredients" classN = "sectionMedium" sectionHead = "Ingredients" />,
-    document.getElementById("ingredients")
+  <IngBoxes id = "ingredients" classN = "sectionMedium" sectionHead = "Ingredients" />,
+  document.getElementById("ingredients")
 )
 
 //fill in recipe box
@@ -104,21 +119,45 @@ function RecipeBoxes (props){
       <div className = "sectionHead">{props.sectionHead}</div>
 
 
-        <div className = "subsection">
-          <p class="subsectionListHead">Item</p>
-          <CreateList listItems = {menu} repeat = {0} button = {false} />
-        </div>
-        <div className = "sectionSpanTwo">
-          <p class="subsectionListHead">Recipe</p>
-          <CreateList listItems = {recipe} repeat = {0} button = {false} />
-        </div>
-
-
+      <div className = "subsection">
+        <p class="subsectionListHead">Item</p>
+        <CreateList listItems = {menu} repeat = {0} button = {false} />
+      </div>
+      <div className = "sectionSpanTwo">
+        <p class="subsectionListHead">Recipe</p>
+        <CreateList listItems = {recipe} repeat = {0} button = {false} />
+      </div>
     </div>
   )
 }
 
 ReactDOM.render(
-    <RecipeBoxes id = "recipe" classN = "sectionMedium" sectionHead = "Recipe" />,
-    document.getElementById("recipe")
+  <RecipeBoxes id = "recipe" classN = "sectionMedium" sectionHead = "Recipe" />,
+  document.getElementById("recipe")
+)
+
+//fill in recipe box
+function RecipeBoxes (props){
+  let menu = ["Burger","Cheese","Lettuce Burger"]
+  let recipe = ["Tomato + Lettuce + Patty + Bun","Burger + Cheese","Patty + 3 Lettuce + Tomato"]
+  return(
+    <div class="sectionSmall">
+      <div className = "sectionHead">{props.sectionHead}</div>
+
+
+      <div className = "subsection">
+        <p class="subsectionListHead">Item</p>
+        <CreateList listItems = {menu} repeat = {0} button = {false} />
+      </div>
+      <div className = "sectionSpanTwo">
+        <p class="subsectionListHead">Recipe</p>
+        <CreateList listItems = {recipe} repeat = {0} button = {false} />
+      </div>
+    </div>
+  )
+}
+
+ReactDOM.render(
+  <RecipeBoxes id = "recipe" classN = "sectionMedium" sectionHead = "Recipe" />,
+  document.getElementById("recipe")
 )

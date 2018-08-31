@@ -1,9 +1,21 @@
-function RestaurantFunds(props){
-  return <h2 id="money">Funds: ${props.funds}</h2>
+class RestaurantFunds extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {funds:100}
+  }
+  componentDidMount() {
+    console.log("Funds componentDidMount!");
+  }
+  componentDidUpdate() {
+    console.log("Funds componentDidUpdate!");
+  }
+  render(){
+    return <h2 id="money">Funds: ${this.state.funds}</h2>
+  }
 }
 
 ReactDOM.render(
-  <RestaurantFunds funds = {"100"} />,
+  <RestaurantFunds />,
   document.getElementById("funds")
 )
 
@@ -17,30 +29,87 @@ ReactDOM.render(
 )
 
 //filling in boxes
-function SubsectionList(props){return <p className="subsectionList">{props.item}</p>}
+function SubsectionList(props){return <p className= {"subsectionList"} id = {props.id}>{props.item}</p>}
 
-function CreateButton(props){
-  function buyGroceries(){
-    console.log("BUY!", props.food, new Date().toLocaleString())
+class CreateButtons extends React.Component{
+  constructor(props){
+    super(props);
+    this.functionList = {
+      buyGroceries: function(a){console.log("BUY!",a, new Date().toLocaleString());},
+      upgrade: function(a){console.log("Upgrade!", a, new Date().toLocaleString());},
+      makeFood: function(a){console.log("makeFood!", a, new Date().toLocaleString());},
+      hire: function(a){console.log("Hire!", a, new Date().toLocaleString());},
+      adjustPrice: function(a){console.log("Adjust Price!", a, new Date().toLocaleString());}
+    };
   }
-  return <p className="subsectionList"><button onClick={buyGroceries}>Buy</button></p>
-}
+  render(){
+    let key = Object.keys(this.props.listItems)[0];
+    let outputList = [];
+    let funcList = this.functionList;
+    let buttonLabel = this.props.button;
+    this.props.listItems[key].forEach(function(theId){
+      outputList.push(
+        <p className={"classNa"}>
+          <button id = {theId} onClick={() => funcList[key](key)}>
+            {buttonLabel}
+          </button>
+        </p>
+      )
+    });
+    return(
+      <div className={"subsectionCentered"}>
+        <p className="subsectionListHead">Button</p>
+        {outputList}
+      </div>
+    );
+
+  };
+};
+
+// function CreateButton(props){
+//
+//   let classNa = "subsectionList"
+//   if(props.classNPrice){
+//     classNa += " " + props.classNPrice
+//   }
+//   //all the functions for buttons
+//   let functionList ={
+//     buyGroceries: function(a){
+//       console.log("BUY!",a, props.food, new Date().toLocaleString());
+//     },
+//     upgrade: function(){
+//       console.log("Upgrade!", props.food, new Date().toLocaleString());
+//     },
+//     makeFood: function(){
+//       console.log("makeFood!", props.food, new Date().toLocaleString());
+//     },
+//     hire: function(){
+//       console.log("Hire!", props.food, new Date().toLocaleString());
+//     },
+//     adjustPrice: function(){
+//       console.log("Adjust Price!", props.food, new Date().toLocaleString());
+//     }
+//   }
+//   return <p className={classNa}><button id = {props.food} onClick={() => functionList[props.func]("pass thru argument")}>{props.buttonLabel}</button></p>
+// }
 
 function CreateList(props) {
   let outputList = []
-  let inputList = props.listItems
 
-  if (props.repeat != 0){
+  if (typeof props.listItems === "string"){
     // for columns where the starting value is the same for all rows
-    for(let i = 0; i < props.repeat; i++){
-      outputList.push(<SubsectionList item = {inputList} />)
-    }
+
+    (props.ids).forEach((theID) => {
+      outputList.push(<SubsectionList item = {props.listItems} id = {theID} />);
+    });
   }else{
+
     //for columns where each row is taken from the array passed through
     if (props.button){
-      inputList.forEach(function(id){outputList.push(<CreateButton food = {id}/>)})
+      let key = Object.keys(props.listItems)[0]
+      props.listItems[key].forEach(function(theId){outputList.push(<CreateButton func = {key} food = {theId} buttonLabel = {props.button} classNPrice = {props.classNPrice}/>)})
     }else{
-      inputList.forEach(function(item){outputList.push(<SubsectionList item = {item} />)})
+      props.listItems.forEach(function(item){outputList.push(<SubsectionList item = {item} />)})
     }
   }
   return (
@@ -52,7 +121,7 @@ function CreateSubsection(props){
   return(
     <div className={props.sectionType}>
       <p className="subsectionListHead">{props.subsectionHead}</p>
-      <CreateList listItems = {props.listItems} repeat = {props.repeat} button = {props.button} />
+      <CreateList listItems = {props.listItems} repeat = {props.repeat} button = {props.button} ids = {props.ids} classNPrice = {props.classNPrice}/>
     </div>
   )
 }
@@ -61,7 +130,8 @@ function CreateSubsection(props){
 function IngBoxes (props){
   let ing = ["Burger Bun","Burger Patty","Tomato","Lettuce Slice","Cheese","Coke"]
   let prices = ["$3.00","$5.00","$4.00","$0.10","$2.00","$0.50"]
-  let ids = ["buyGroceries('bun')","buyGroceries('patty')","buyGroceries('tomato')","buyGroceries('lettuce')","buyGroceries('cheese')","buyGroceries('coke')"]
+  let functions = {buyGroceries: ["bun","patty","tomato","lettuce","cheese","coke"]}
+  let ingIDs = ["bunTotal","pattyTotal","tomatoTotal","lettuceTotal","cheeseTotal",""]
 
   let listLength = ing.length
   return(
@@ -69,10 +139,11 @@ function IngBoxes (props){
       <div className = "sectionHead">{props.sectionHead}</div>
       <CreateSubsection sectionType = {"subsection"} subsectionHead = {"Ingredient"} listItems = {ing} repeat = {0} button = {false} />
       <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Cost"} listItems = {prices} repeat = {0} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {"0"} repeat = {listLength}  button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {ids} repeat = {0} button = {true} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Demand"} listItems = {"1"} repeat = {listLength} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"# Bought"} listItems = {"0"} repeat = {listLength} button = {false} />
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {"0"} repeat = {listLength}  button = {false} ids = {ingIDs} />
+      {/* <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {functions} repeat = {0} button = {"Buy"} /> */}
+      <CreateButtons sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {functions} repeat = {0} button = {"Buy"}  />
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Demand"} listItems = {"1"} repeat = {listLength} button = {false} ids = {ingIDs} />
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"# Bought"} listItems = {"0"} repeat = {listLength} button = {false} ids = {ingIDs} />
     </div>
   )
 }
@@ -102,20 +173,23 @@ ReactDOM.render(
 
 //fill in restaurant box
 function RestaurantBoxes (props){
-  let menu = ["Burger","Cheese Burger","Lettuce Burger","Coke"]
-  let listLength = menu.length
-  let ids = ["makeFood('burger')","makeFood('cheeseBurger')","makeFood('lettuceBurger')"]
-  let prices = ["$3.00","$4.00","$3.00","$1.50"]
+  let menu = ["Burger","Cheese Burger","Lettuce Burger","Coke"];
+  let listLength = menu.length;
+  let ids = {makeFood: ["burger","cheeseBurger","lettuceBurger"]};
+  let idsPriceAdjust = {priceAdjust: ["burger","cheeseBurger","lettuceBurger", "coke"]};
+  let prices = ["$3.00","$4.00","$3.00","$1.50"];
+  let resIDs = ["burger","cheeseBurger","lettuceBurger", "coke"];
+  let resTotalIDs = resIDs.map(x => x + "Total");
 
   return(
     <div className={props.classN}>
       <div className = "sectionHead">{props.sectionHead}</div>
       <CreateSubsection sectionType = {"subsection"} subsectionHead = {"Product"} listItems = {menu} repeat = {0} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {0} repeat = {listLength} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {ids} repeat = {0} button = {true} />
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {"0"} repeat = {listLength} button = {false} ids = {resIDs}/>
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {ids} repeat = {0} button = {"Prepare"} />
       <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Price"} listItems = {prices} repeat = {0} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {ids} repeat = {0} button = {true} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {0} repeat = {listLength} button = {false} />
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {idsPriceAdjust} repeat = {0} button = {"+"} classNPrice = {"priceAdjust"}/>
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {"0"} repeat = {listLength} button = {false} ids = {resTotalIDs} />
     </div>
   )
 }
@@ -129,13 +203,14 @@ ReactDOM.render(
 function StaffBoxes (props){
   let staff = ["Ponpon", "Beary Bear", "Malo"]
   let listLength = staff.length
-  let buttonsID = ["upgrade(0)","upgrade(1)","upgrade(2)"]
+  let buttonsID = {upgrade: ["upgrade(0)","upgrade(1)","upgrade(2)"]}
+  //   let buttonsID = ["upgrade(0)","upgrade(1)","upgrade(2)"]
 
   return(
     <div className={props.classN}>
       <div className = "sectionHead">{props.sectionHead}</div>
       <CreateSubsection sectionType = {"subsection"} subsectionHead = {""} listItems = {staff} repeat = {0} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {buttonsID} repeat = {0} button = {true} />
+      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {buttonsID} repeat = {0} button = {"Train"} />
 
     </div>
   )
@@ -158,7 +233,6 @@ function ResearchBoxes (props){
       <div className = "sectionHead">{props.sectionHead}</div>
       <CreateSubsection sectionType = {"subsection"} subsectionHead = {"Staff"} listItems = {staff} repeat = {0} button = {false} />
       <CreateSubsection sectionType = {"sectionSpanThree"} subsectionHead = {"Description"} listItems = {description} repeat = {0} button = {false} />
-
     </div>
   )
 }

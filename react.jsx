@@ -107,7 +107,7 @@ function CreateList(props) {
     //for columns where each row is taken from the array passed through
     if (props.button){
       let key = Object.keys(props.listItems)[0]
-      props.listItems[key].forEach(function(theId){outputList.push(<CreateButton func = {key} food = {theId} buttonLabel = {props.button} classNPrice = {props.classNPrice}/>)})
+      // props.listItems[key].forEach(function(theId){outputList.push(<CreateButton func = {key} food = {theId} buttonLabel = {props.button} classNPrice = {props.classNPrice}/>)})
     }else{
       props.listItems.forEach(function(item){outputList.push(<SubsectionList item = {item} />)})
     }
@@ -128,12 +128,12 @@ function CreateSubsection(props){
 
 //fill in ingredient box
 function IngBoxes (props){
-  let ing = ["Burger Bun","Burger Patty","Tomato","Lettuce Slice","Cheese","Coke"]
-  let prices = ["$3.00","$5.00","$4.00","$0.10","$2.00","$0.50"]
-  let functions = {buyGroceries: ["bun","patty","tomato","lettuce","cheese","coke"]}
-  let ingIDs = ["bunTotal","pattyTotal","tomatoTotal","lettuceTotal","cheeseTotal",""]
+  let ing = ["Burger Bun","Burger Patty","Tomato","Lettuce Slice","Cheese","Coke"];
+  let prices = ["$3.00","$5.00","$4.00","$0.10","$2.00","$0.50"];
+  let functions = {buyGroceries: ["bun","patty","tomato","lettuce","cheese","coke"]};
+  let ingIDs = ["bunTotal","pattyTotal","tomatoTotal","lettuceTotal","cheeseTotal",""];
 
-  let listLength = ing.length
+  let listLength = ing.length;
   return(
     <div className={props.classN}>
       <div className = "sectionHead">{props.sectionHead}</div>
@@ -180,6 +180,7 @@ function RestaurantBoxes (props){
   let prices = ["$3.00","$4.00","$3.00","$1.50"];
   let resIDs = ["burger","cheeseBurger","lettuceBurger", "coke"];
   let resTotalIDs = resIDs.map(x => x + "Total");
+  let functions = {adjustPrice: ["bun,-0.1","patty,-0.1","tomato,-0.1","lettuce,-0.1","cheese,-0.1","coke,-0.1"]};
 
   return(
     <div className={props.classN}>
@@ -188,7 +189,8 @@ function RestaurantBoxes (props){
       <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {"0"} repeat = {listLength} button = {false} ids = {resIDs}/>
       <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {ids} repeat = {0} button = {"Prepare"} />
       <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Price"} listItems = {prices} repeat = {0} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {idsPriceAdjust} repeat = {0} button = {"+"} classNPrice = {"priceAdjust"}/>
+      {/* <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {idsPriceAdjust} repeat = {0} button = {"+"} classNPrice = {"priceAdjust"}/> */}
+      <CreateButtons sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {functions} repeat = {0} button = {"+"}  />
       <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {"Inventory"} listItems = {"0"} repeat = {listLength} button = {false} ids = {resTotalIDs} />
     </div>
   )
@@ -210,7 +212,8 @@ function StaffBoxes (props){
     <div className={props.classN}>
       <div className = "sectionHead">{props.sectionHead}</div>
       <CreateSubsection sectionType = {"subsection"} subsectionHead = {""} listItems = {staff} repeat = {0} button = {false} />
-      <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {buttonsID} repeat = {0} button = {"Train"} />
+      {/* <CreateSubsection sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {buttonsID} repeat = {0} button = {"Train"} /> */}
+      <CreateButtons sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {buttonsID} repeat = {0} button = {"Train"}  />
 
     </div>
   )
@@ -232,7 +235,8 @@ function ResearchBoxes (props){
     <div className={props.classN}>
       <div className = "sectionHead">{props.sectionHead}</div>
       <CreateSubsection sectionType = {"subsection"} subsectionHead = {"Staff"} listItems = {staff} repeat = {0} button = {false} />
-      <CreateSubsection sectionType = {"sectionSpanThree"} subsectionHead = {"Description"} listItems = {description} repeat = {0} button = {false} />
+      {/* <CreateSubsection sectionType = {"sectionSpanThree"} subsectionHead = {"Description"} listItems = {description} repeat = {0} button = {false} /> */}
+      {/* <CreateButtons sectionType = {"subsectionCentered"} subsectionHead = {""} listItems = {buttonsID} repeat = {0} button = {"Train"}  /> */}
     </div>
   )
 }
